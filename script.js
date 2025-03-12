@@ -10,11 +10,13 @@ function calcularTempoDeVida(nome, dataNascimento) {
         
         const dataFalecimentoObjeto = new Date(dataFalecimento);
         vidaMs = dataFalecimentoObjeto - dataNascimentoObjeto;
-    } else {
+    }
+    else {
 
         vidaMs = dataAtual - dataNascimentoObjeto;
     }
-
+   
+    
     const vidaDias = Math.floor(vidaMs / (1000 * 60 * 60 * 24));
     const vidaSemanas = Math.floor(vidaDias / 7);
     const vidaMeses = Math.floor(vidaDias / 30.44);
@@ -39,5 +41,8 @@ document.getElementById('form').addEventListener('submit', function(event) {
         const resultado = calcularTempoDeVida(nome, dataNascimento);
 
         document.getElementById('resultado').innerHTML = resultado;
+    }
+    if(dataNascimento< dataFalecimento){
+        document.getElementById('resultado').innerHTML = "A data de nascimento deve ser anterior a data de falecimento, morreu antes de nascer?"
     }
 });
